@@ -1,0 +1,45 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Andy\.yarn\bin\yarn.js deploy-only
+
+PATH: 
+  C:\Users\Andy\.yarn\bin;C:\Users\Andy\.config\yarn\global\node_modules\.bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Andy\bin;C:\Program Files\Python311\Scripts;C:\Program Files\Python311;C:\Program Files\Microsoft MPI\Bin;C:\Program Files\ImageMagick-7.1.0-Q16-HDRI;C:\Python39\Scripts;C:\Python39;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\ImageMagick-7.0.1-Q16;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Common Files\HP\Digital Imaging\bin;C:\Program Files\Common Files\Autodesk Shared;E:\Poser Utilities;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Java\jdk1.7.0_45\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\dotnet;C:\Program Files (x86)\Common Files\Ulead Systems\MPEG;C:\Program Files (x86)\GnuWin32\bin;C:\Program Files (x86)\Gow\bin;C:\Program Files\PuTTY;C:\Users\Andy\AppData\Roaming\nvm;C:\Program Files\Git\cmd;C:\Program Files\WorldPainter;C:\WINDOWS\System32\OpenSSH;C:\ProgramData\ComposerSetup\bin;C:\sqlite;C:\Program Files\Oracle\VirtualBox;C:\HashiCorp\Vagrant\bin;C:\Gradle\gradle-7.6.1\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\All Users\miniconda3\Library\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\Nsight Compute 2022.3.0;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\libnvvp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin;C:\Users\Andy\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Users\Andy\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\eSpeak NG;C:\Users\Andy\AppData\Local\Programs\Python\Python37-32\Scripts;C:\Users\Andy\AppData\Local\Programs\Python\Python37-32;C:\Users\Andy\.windows-build-tools\python27;C:\Users\Andy\AppData\Roaming\npm\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\ImageMagick-7.0.1-Q16;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Common Files\HP\Digital Imaging\bin;C:\Program Files\Common Files\Autodesk Shared;E:\Poser Utilities;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0;C:\Program Files (x86)\Java\jdk1.7.0_45\bin;C:\Program Files (x86)\Autodesk\Backburner;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Microsoft Network Monitor 3;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\HashiCorp\Vagrant\bin;C:\Program Files (x86)\Common Files\Ulead Systems\MPEG;C:\Program Files (x86)\GnuWin32\bin;C:\Program Files (x86)\Gow\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Andy\AppData\Local\Code\bin;C:\Users\Andy\AppData\Local\Microsoft\WindowsApps;C:\Users\Andy\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\ffmpeg-4.3.2\bin;C:\Users\Andy\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Andy\AppData\Local\Microsoft\WindowsApps;C:\Users\Andy\AppData\Roaming\npm;C:\Users\Andy\AppData\Roaming\Composer\vendor\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.2\bin;C:\Program Files (x86)\Inno Setup 6
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.14.2
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: P:\Personal\adrian.wittrock.us\package.json: Unexpected token } in JSON at position 491
+      at JSON.parse (<anonymous>)
+      at C:\Users\Andy\.yarn\lib\cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\Andy\.yarn\lib\cli.js:310:30)
+      at C:\Users\Andy\.yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "adrian.wittrock.us",
+    "version": "1.0.0",
+    "main": "public/index.html",
+    "repository": "https://github.com/DaemonAlchemist/adrian.wittrock.us.git",
+    "author": "Adrian Wittrock",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+      "deploy-only": "aws s3 sync ./public s3://adrian.wittrock.us --acl public-read",
+      "deploy": "yarn deploy-only && yarn refresh",
+      "refresh": "aws cloudfront create-invalidation --distribution-id E3L307RHDN6U7R --paths \"/*\""
+    },
+  
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

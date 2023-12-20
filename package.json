@@ -1,0 +1,15 @@
+{
+  "name": "adrian.wittrock.us",
+  "version": "1.0.0",
+  "main": "public/index.html",
+  "repository": "https://github.com/DaemonAlchemist/adrian.wittrock.us.git",
+  "author": "Adrian Wittrock",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "deploy-only": "aws s3 sync ./public s3://adrian.wittrock.us --acl public-read",
+    "deploy": "yarn deploy-only && yarn refresh",
+    "refresh": "aws cloudfront create-invalidation --distribution-id E1XJ527H05O7CV --paths \"/*\""
+  }
+
+}
