@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>Games</title>
+        <link rel="stylesheet" href="style.css"/>
+        <style>
+            #screen {
+                width: 800px;
+                height: 600px;
+                border: 1px solid black;
+                margin: 0 auto;
+                position: relative;
+            }
+            #player {
+                width: 50px;
+                height: 50px;
+                background-color: rgb(255, 255, 255);
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        </style>
+        <script>
+            let player = {
+                x: 0,
+                y: 0,
+                dx: 0,
+                dy: 0,
+            }
+
+            let gameSettings = {
+                gravity: 5,
+                jumpHeight: 35,
+                moveSpeed: 5,
+            }
+
+            function movePlayer() {
+                let playerElement = document.getElementById('player');
+                player.x += player.dx;
+                player.y += player.dy;
+                playerElement.style.left = player.x + 'px';
+                playerElement.style.bottom = player.y + 'px';
+            }
+
+            function jump() {
+                if (player.y === 0) {
+                    player.dy = gameSettings.jumpHeight; // Jump height
+                }
+            }
+
+            function addGravity() {
+                if (player.y > 0) {
+                    player.dy -= gameSettings.gravity; // Gravity
+                } else {
+                    player.y = 0;
+                    player.dy = 0;
+                }
+            }
+
+            function handleEvents() {
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'ArrowUp') {
+                        jump();
+                    }
+                });
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'ArrowRight') {
+                        player.dx = gameSettings.moveSpeed; // Move right
+                    }
+                });
+                document.addEventListener('keyup', function(event) {
+                    if (event.key === 'ArrowRight') {
+                        player.dx = 0; // Stop moving right
+                    }
+                });
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'ArrowLeft') {
+                        player.dx = -gameSettings.moveSpeed; // Move left
+                    }
+                });
+                document.addEventListener('keyup', function(event) {
+                    if (event.key === 'ArrowLeft') {
+                        player.dx = 0; // Stop moving left
+                    }
+                });
+            }
+
+            function game() {
+                movePlayer();
+                addGravity();
+                handleEvents();
+            }
+
+            setInterval(game, 1000 / 60); // 60 FPS
+        </script>
+    </head>
+    <body>
+        <h1>GAMES</h1>
+        <div id="screen">
+            <div id="player"></div>
+        </div>
+    </body>
+</html>
